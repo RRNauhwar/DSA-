@@ -1,17 +1,20 @@
 // Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
+    public ArrayList<Integer> topKFrequent(int[] arr, int k) {
+        // Your code here
         HashMap<Integer,Integer> map = new HashMap<>();
-        for(int num:nums){
+        for(int num:arr){
             map.put(num,map.getOrDefault(num,0)+1);
         }
         ArrayList <Integer> keys = new ArrayList<>(map.keySet());
-        int [] res = new int [k];
-        keys.sort((a,b)->map.get(b)-map.get(a));
+        keys.sort((a,b)->{int freqCompare = map.get(b) - map.get(a);
+    if (freqCompare != 0) return freqCompare;
+    return b - a;});
+        ArrayList <Integer> res = new ArrayList<>();
         for(int i=0;i<k;i++){
-            res[i] = keys.get(i);
+            res.add(keys.get(i));
         }
         return res;
-
     }
 }
+
