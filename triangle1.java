@@ -1,17 +1,20 @@
 public class triangle1 {
     public static void main(String[] args) {
         int count = 5;
-        pattern(count);
+        printPattern(count,0);
     }
 
-    static void pattern(int n) {
-        if (n == 0) {
+    static void printPattern(int rows, int cols) {
+        if (rows == 0) {
             return;
         }
-        for (int i = 1; i <= n; i++) {
+        if (cols < rows) {
             System.out.print("* ");
+            printPattern(rows, cols + 1);
         }
-        System.out.println();
-        pattern(n-1);
+        else {
+            System.out.println();
+            printPattern(rows-1, 0);
+        }
     }
 }
