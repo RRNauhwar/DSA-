@@ -1,3 +1,4 @@
+// skipcharacter using recursion
 public class skipCharacter {
     public static void main(String[] args) {
         String s = "rahul chaudhary";
